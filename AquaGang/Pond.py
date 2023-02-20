@@ -184,7 +184,7 @@ class Pond:
 
         bg = pygame.image.load("./assets/images/background/bg3.jpg")
         bg = pygame.transform.scale(bg, (1280, 720))
-        pygame.display.set_caption("Fish Haven Project")
+        pygame.display.set_caption("AquaGang Project")
         clock = pygame.time.Clock()
         start_time = pygame.time.get_ticks()
         pregnant_time = pygame.time.get_ticks()
