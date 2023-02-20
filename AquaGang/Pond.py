@@ -25,7 +25,7 @@ class Pond:
         self.name = "sick-salmon"
         self.fishes = []
         self.moving_sprites = pygame.sprite.Group()
-        self.sharkImage = pygame.image.load("C:/Users/MSI/OneDrive/เดสก์ท็อป/ตู้ปลามหาภัย/AquaGang/assets/images/sprites/shark.png")
+        self.sharkImage = pygame.image.load("./assets/images/sprites/shark.png")
         self.sharkImage = pygame.transform.scale(self.sharkImage, (128,128))
         self.msg = ""
         self.pondData = PondData(self.name)
@@ -182,7 +182,7 @@ class Pond:
         pygame.init()
         screen = pygame.display.set_mode((1280, 720))
 
-        bg = pygame.image.load("C:/Users/MSI/OneDrive/เดสก์ท็อป/ตู้ปลามหาภัย/AquaGang/assets/images/background/bg.jpg")
+        bg = pygame.image.load("./assets/images/background/bg3.jpg")
         bg = pygame.transform.scale(bg, (1280, 720))
         pygame.display.set_caption("Fish Haven Project")
         clock = pygame.time.Clock()
