@@ -26,7 +26,7 @@ class Pond:
         self.fishes = []
         self.moving_sprites = pygame.sprite.Group()
         self.plankton = pygame.image.load("./assets/images/sprites/plankton.png")
-        self.birdImage = pygame.image.load("./assets/images/sprites/bird.png")
+        self.birdImage = pygame.image.load("./assets/images/sprites/crab.png")
         self.plankton = pygame.transform.scale(self.plankton, (128,128))
         self.birdImage = pygame.transform.scale(self.birdImage, (128, 128))
         self.msg = ""
@@ -272,7 +272,7 @@ class Pond:
 
             #shark every 15 seconds
             if time_since_enter > 7000:
-                if len(self.fishes) > 3 and len(self.fishes) <= 4:
+                if len(self.fishes) > 4 and len(self.fishes)% 2 == 0:
                     deadFishbyPlankton = self.randomShark()
                     screen.blit(self.plankton, (deadFishbyPlankton.getFishx()+30, deadFishbyPlankton.getFishy()))
                     pygame.display.flip()
@@ -281,7 +281,7 @@ class Pond:
                     self.removeFish(deadFishbyPlankton)
                     deadFishbyPlankton.die()
                     start_time = pygame.time.get_ticks()
-                elif len(self.fishes) > 5:
+                elif len(self.fishes) > 4 and len(self.fishes)% 2 != 0:
                     deadFishbyBird = self.randomBird()
                     screen.blit(self.birdImage, (deadFishbyBird.getFishx()+30, deadFishbyBird.getFishy()))
                     pygame.display.flip()
