@@ -59,7 +59,7 @@ class Fish(pygame.sprite.Sprite):
     def loadSprite(self, genesis):
         path = "./assets/images/sprites/"
         if genesis == "AquaGang":
-            path += "local-pond/"
+            path += "gang-pond/"
         else:
             path += "foreign-pond/"
 
