@@ -14,11 +14,11 @@ class FishFrame(QGroupBox):
 
     def addInfo(self, info):
         low_rez = QSize(100, 100)
-        pixmap = QPixmap('./assets/images/sprites/local-pond/1.png')
+        pixmap = QPixmap('./assets/images/sprites/gang-pond/1.png')
         label = QLabel(self)
 
         if info[3].lower() == "AquaGang":
-            pixmap = QPixmap('./assets/images/sprites/local-pond/1.png')
+            pixmap = QPixmap('./assets/images/sprites/gang-pond/1.png')
         elif info[3].lower() == "peem":
             pixmap = QPixmap('./assets/images/sprites/foreign-pond/1.png')
         elif info[3].lower() == "dang":
