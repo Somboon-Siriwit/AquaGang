@@ -5,7 +5,7 @@ import random
 from FishData import FishData
 
 class Fish(pygame.sprite.Sprite):
-    def __init__(self, pos_x, pos_y, genesis="sick-salmon", parent = None):
+    def __init__(self, pos_x, pos_y, genesis="AquaGang", parent = None):
         super().__init__()
         self.fishData = FishData(genesis, parent)
          
@@ -58,7 +58,7 @@ class Fish(pygame.sprite.Sprite):
 
     def loadSprite(self, genesis):
         path = "./assets/images/sprites/"
-        if genesis == "sick-salmon":
+        if genesis == "AquaGang":
             path += "local-pond/"
         else:
             path += "foreign-pond/"
