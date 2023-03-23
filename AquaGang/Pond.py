@@ -26,7 +26,7 @@ class Pond:
         self.fishes = []
         self.moving_sprites = pygame.sprite.Group()
         self.plankton = pygame.image.load("./assets/images/sprites/plankton.png")
-        self.birdImage = pygame.image.load("./assets/images/sprites/shark.png")
+        self.birdImage = pygame.image.load("./assets/images/sprites/bird.png")
         self.plankton = pygame.transform.scale(self.plankton, (128,128))
         self.birdImage = pygame.transform.scale(self.birdImage, (128, 128))
         self.msg = ""
@@ -271,8 +271,8 @@ class Pond:
                 pregnant_time = pygame.time.get_ticks()
 
             #shark every 15 seconds
-            if time_since_enter > 5000:
-                if len(self.fishes)>4 and len(self.fishes) <= 5:
+            if time_since_enter > 7000:
+                if len(self.fishes) > 3 and len(self.fishes) <= 4:
                     deadFishbyPlankton = self.randomShark()
                     screen.blit(self.plankton, (deadFishbyPlankton.getFishx()+30, deadFishbyPlankton.getFishy()))
                     pygame.display.flip()
