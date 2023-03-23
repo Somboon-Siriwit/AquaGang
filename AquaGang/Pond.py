@@ -22,7 +22,7 @@ from Client import Client
 class Pond:
 
     def __init__(self):
-        self.name = "sick-salmon"
+        self.name = "AquaGang"
         self.fishes = []
         self.moving_sprites = pygame.sprite.Group()
         self.sharkImage = pygame.image.load("./assets/images/sprites/plankton.png")
