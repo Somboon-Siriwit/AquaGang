@@ -25,7 +25,7 @@ class Pond:
         self.name = "sick-salmon"
         self.fishes = []
         self.moving_sprites = pygame.sprite.Group()
-        self.sharkImage = pygame.image.load("./assets/images/sprites/shark.png")
+        self.sharkImage = pygame.image.load("./assets/images/sprites/plankton.png")
         self.sharkImage = pygame.transform.scale(self.sharkImage, (128,128))
         self.msg = ""
         self.pondData = PondData(self.name)
@@ -265,13 +265,13 @@ class Pond:
                 pregnant_time = pygame.time.get_ticks()
 
             #shark every 15 seconds
-            if time_since_enter > 15000:
+            if time_since_enter > 5000:
                 if len(self.fishes)>4:
                     deadFish = self.randomShark()
                     screen.blit(self.sharkImage, (deadFish.getFishx()+30, deadFish.getFishy()))
                     pygame.display.flip()
                     pygame.event.pump()
-                    pygame.time.delay(500)
+                    pygame.time.delay(1000)
                     self.removeFish(deadFish)
                     deadFish.die()
                     start_time = pygame.time.get_ticks()
