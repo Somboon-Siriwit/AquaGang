@@ -25,8 +25,10 @@ class Pond:
         self.name = "AquaGang"
         self.fishes = []
         self.moving_sprites = pygame.sprite.Group()
-        self.sharkImage = pygame.image.load("./assets/images/sprites/plankton.png")
-        self.sharkImage = pygame.transform.scale(self.sharkImage, (128,128))
+        self.plankton = pygame.image.load("./assets/images/sprites/plankton.png")
+        self.birdImage = pygame.image.load("./assets/images/sprites/shark.png")
+        self.plankton = pygame.transform.scale(self.plankton, (128,128))
+        self.birdImage = pygame.transform.scale(self.birdImage, (128, 128))
         self.msg = ""
         self.pondData = PondData(self.name)
         self.network = None
@@ -39,12 +41,16 @@ class Pond:
     def getPopulation(self):
         return len(self.fishes)
     
+    def randomBird(self):
+        dead = randint(0, len(self.fishes)-1)
+        return self.fishes[dead]
+
     def randomShark(self):
         dead = randint(0, len(self.fishes)-1)
         return self.fishes[dead]
 
     # def sharkAttack(self, screen, fish):
-    #     screen.blit(self.sharkImage, (fish.getFishx(), fish.getFishy())) 
+    #     screen.blit(self.plankton, (fish.getFishx(), fish.getFishy())) 
     #     self.removeFish(fish)
     #     fish.die()
            
@@ -266,16 +272,24 @@ class Pond:
 
             #shark every 15 seconds
             if time_since_enter > 5000:
-                if len(self.fishes)>4:
-                    deadFish = self.randomShark()
-                    screen.blit(self.sharkImage, (deadFish.getFishx()+30, deadFish.getFishy()))
+                if len(self.fishes)>4 and len(self.fishes) <= 5:
+                    deadFishbyPlankton = self.randomShark()
+                    screen.blit(self.plankton, (deadFishbyPlankton.getFishx()+30, deadFishbyPlankton.getFishy()))
                     pygame.display.flip()
                     pygame.event.pump()
                     pygame.time.delay(1000)
-                    self.removeFish(deadFish)
-                    deadFish.die()
+                    self.removeFish(deadFishbyPlankton)
+                    deadFishbyPlankton.die()
                     start_time = pygame.time.get_ticks()
-            
+                elif len(self.fishes) > 5:
+                    deadFishbyBird = self.randomBird()
+                    screen.blit(self.birdImage, (deadFishbyBird.getFishx()+30, deadFishbyBird.getFishy()))
+                    pygame.display.flip()
+                    pygame.event.pump()
+                    pygame.time.delay(1000)
+                    self.removeFish(deadFishbyBird)
+                    deadFishbyBird.die()
+                    start_time = pygame.time.get_ticks()
             # print(len(self.fishes))
 
             # if time_since_last_data_send > 2000:
