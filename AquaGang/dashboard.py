@@ -1,7 +1,7 @@
-from PyQt5.QtWidgets import (QWidget, QSlider, QLineEdit, QLabel, QPushButton, QScrollArea,QApplication,
+from PyQt6.QtWidgets import (QWidget, QSlider, QLineEdit, QLabel, QPushButton, QScrollArea,QApplication,
                              QHBoxLayout, QGroupBox, QGridLayout, QVBoxLayout, QMainWindow, QFrame)
-from PyQt5.QtCore import Qt, QSize
-from PyQt5 import QtWidgets, uic, QtGui
+from PyQt6.QtCore import Qt, QSize
+from PyQt6 import QtWidgets, uic, QtGui
 import sys
 
 from fishFrame import FishFrame
@@ -53,8 +53,8 @@ class Dashboard(QMainWindow):
 
 
         #Scroll Area Properties
-        self.scroll.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOn)
-        self.scroll.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
+        self.scroll.setVerticalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOn)
+        self.scroll.setHorizontalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
         self.scroll.setWidgetResizable(True)
         self.scroll.setWidget(self.widget)
 

@@ -1,7 +1,7 @@
-from PyQt5.QtWidgets import (QWidget, QSlider, QLineEdit, QLabel, QPushButton, QScrollArea,QApplication,
+from PyQt6.QtWidgets import (QWidget, QSlider, QLineEdit, QLabel, QPushButton, QScrollArea,QApplication,
                              QHBoxLayout, QGroupBox, QGridLayout, QVBoxLayout, QMainWindow, QFrame)
-from PyQt5.QtCore import Qt, QSize
-from PyQt5 import QtWidgets, uic, QtGui
+from PyQt6.QtCore import Qt, QSize
+from PyQt6 import QtWidgets, uic, QtGui
 import sys
 
 from pondFrame import PondFrame
@@ -44,15 +44,15 @@ class PondDashboard(QMainWindow):
 
 
         #Scroll Area Properties
-        self.scroll.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOn)
-        self.scroll.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
+        self.scroll.setVerticalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOn)
+        self.scroll.setHorizontalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
         self.scroll.setWidgetResizable(True)
         self.scroll.setWidget(self.widget)
 
         self.setCentralWidget(self.scroll)
 
         self.setGeometry(0, 20, 800, 200)
-        self.setWindowTitle('Pond Dashboard')
+        self.setWindowTitle('ViviSystem Dashboard')
         self.show()
 
         return

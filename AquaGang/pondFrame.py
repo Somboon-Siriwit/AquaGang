@@ -1,6 +1,6 @@
-from PyQt5.QtWidgets import QGroupBox, QVBoxLayout, QLabel, QHBoxLayout
-from PyQt5.QtGui import QPixmap
-from PyQt5.QtCore import QSize
+from PyQt6.QtWidgets import QGroupBox, QVBoxLayout, QLabel, QHBoxLayout
+from PyQt6.QtGui import QPixmap
+from PyQt6.QtCore import QSize
 
 class PondFrame(QGroupBox):
     

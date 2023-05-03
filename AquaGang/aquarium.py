@@ -4,10 +4,19 @@ import random
 import os
 # from src.Fish import Fish
 from Pond import Pond
+from FishStore import FishStore, connect_to_redis
+from vivisystem.client import VivisystemClient
+
 os.environ['SDL_VIDEO_WINDOW_POS'] = "%d,%d" % (1000,290)
 
-pond = Pond()
-pond.run()
+if __name__ == "__main__":
+    pond_name = sys.argv[1] if len(sys.argv) > 1 else "Aqua-Gang"
+    db_i = int(sys.argv[2]) if len(sys.argv) > 1 and len(sys.argv) > 2 else 0
+    r = connect_to_redis(db=db_i)
+    fishStore = FishStore(r, db_i=db_i)
+    vivi_client = VivisystemClient("ws://127.0.0.1:5000", pond_id=pond_name)
+    pond = Pond(fishStore=fishStore, vivi_client=vivi_client, name=pond_name)
+    pond.run()
 
 
 # import pygame
@@ -21,7 +30,7 @@ pond.run()
 # screen_width = 1280
 # screen_height = 720
 
-# bg = pygame.image.load("./assets/images/background/bg.jpg")
+# bg = pygame.image.load("/Users/jirapad/Documents/GitHub/AquaGang/AquaGang/images/background/bg.jpg")
 # bg = pygame.transform.scale(bg, (screen_width, screen_height)) 
 
 # screen = pygame.display.set_mode((screen_width, screen_height))

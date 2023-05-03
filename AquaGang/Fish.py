@@ -57,7 +57,7 @@ class Fish(pygame.sprite.Sprite):
         self.current_sprite = 0
 
     def loadSprite(self, genesis):
-        path = "./assets/images/sprites/"
+        path = "/Users/jirapad/Documents/GitHub/AquaGang/AquaGang/assets/images/sprites/"
         if genesis == "AquaGang":
             path += "gang-pond/"
         else:

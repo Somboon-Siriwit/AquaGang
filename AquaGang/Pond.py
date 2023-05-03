@@ -13,20 +13,24 @@ import random
 import pygame
 import pygame_menu
 import sys
-from PyQt5.QtWidgets import (QWidget, QSlider, QLineEdit, QLabel, QPushButton, QScrollArea,QApplication,
+from PyQt6.QtWidgets import (QWidget, QSlider, QLineEdit, QLabel, QPushButton, QScrollArea,QApplication,
                              QHBoxLayout, QVBoxLayout, QMainWindow)
-from PyQt5.QtCore import Qt, QSize
-from PyQt5 import QtWidgets, uic, QtGui
+from PyQt6.QtCore import Qt, QSize
+from PyQt6 import QtWidgets, uic, QtGui
 import threading
 from Client import Client
+from FishStore import FishStore
+from vivisystem.client import VivisystemClient
+from vivisystem.models import VivisystemPond, VivisystemFish, EventType
+
 class Pond:
 
-    def __init__(self):
-        self.name = "AquaGang"
+    def __init__(self, fishStore: FishStore, vivi_client: VivisystemClient, name="Aqua-Gang"):
+        self.name = name
         self.fishes = []
         self.moving_sprites = pygame.sprite.Group()
-        self.plankton = pygame.image.load("./assets/images/sprites/plankton.png")
-        self.birdImage = pygame.image.load("./assets/images/sprites/crab.png")
+        self.plankton = pygame.image.load("/Users/jirapad/Documents/GitHub/AquaGang/AquaGang/assets/images/sprites/plankton.png")
+        self.birdImage = pygame.image.load("/Users/jirapad/Documents/GitHub/AquaGang/AquaGang/assets/images/sprites/crab.png")
         self.plankton = pygame.transform.scale(self.plankton, (128,128))
         self.birdImage = pygame.transform.scale(self.birdImage, (128, 128))
         self.msg = ""
@@ -34,6 +38,9 @@ class Pond:
         self.network = None
         self.sharkTime = 0
         self.displayShark = False
+        self.fishStore: FishStore = fishStore
+        self.vivi_client = vivi_client
+        
 
     def getPondData(self):
         return self.pondData
@@ -188,7 +195,7 @@ class Pond:
         pygame.init()
         screen = pygame.display.set_mode((1280, 720))
 
-        bg = pygame.image.load("./assets/images/background/bg3.jpg")
+        bg = pygame.image.load("/Users/jirapad/Documents/GitHub/AquaGang/AquaGang/assets/images/background/bg3.jpg")
         bg = pygame.transform.scale(bg, (1280, 720))
         pygame.display.set_caption("AquaGang Project")
         clock = pygame.time.Clock()
@@ -224,13 +231,13 @@ class Pond:
                         for p in self.network.other_ponds.values():
                             allPondsNum += p.getPopulation()
                         d = Dashboard(self.fishes, allPondsNum)
-                        pond_handler = threading.Thread(target=app.exec_)
+                        pond_handler = threading.Thread(target=app.exec)
                         pond_handler.start()
                     elif event.key == pygame.K_LEFT:
                         for pondName in list(self.network.other_ponds.keys()):
                             other_pond_list.append(self.network.other_ponds.get(pondName))
                         pd = PondDashboard(other_pond_list)
-                        pond_handler = threading.Thread(target=app.exec_)
+                        pond_handler = threading.Thread(target=app.exec)
                         pond_handler.start()
                         
             other_pond_list = []
